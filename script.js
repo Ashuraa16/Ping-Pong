@@ -1,11 +1,13 @@
 //storing local 
 if( localStorage.getItem("score")==undefined){
-    alert("This is your First Time");
+    alert("This is the first round on this Device");
 
 }
 else{
     var s=localStorage.getItem("score");
-    alert("Your Highest Score "+s);
+    var n=localStorage.getItem("name");
+    // localStorage.clear();
+    alert("The Highest Score is scored by "+n+" which is "+s);
 }
 //val will store the score of the game
 var val = 0;
@@ -43,16 +45,23 @@ function ballMovement() {
             ball.style.top = i + 'px';
             ball.style.left = j + 'px';
             if( localStorage.getItem("score")==undefined){
+                let n=prompt("what is your name??");
                 localStorage.setItem("score", val);
-                alert("Your First Game Score :"+val);
+                localStorage.setItem("name", n);
+                alert(n+" your first game score is: "+val);
             }
             else{
                 if(parseInt(localStorage.getItem("score"))<val){
+                    let n=prompt("what is your name??");
                     localStorage.setItem("score", val);
-                    alert("Your New Highest Score :"+val);
+                    localStorage.setItem("name", n);
+                    alert(n+" Your New Highest Score is:"+val);
                 }
                 else{
-                    alert("Your Current Round Score :"+val);
+                    
+                    let n=localStorage.getItem("name");
+                    let v=localStorage.getItem("score");
+                    alert(n+" is ahead of you with "+v+" score points but your score is "+val);
                 }
             }
             rodp = 650;   val = 0; check=0;ci=0;cj=0;
